@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#d48f00',
     },
     page: {
       background: '#f9f9f9',
@@ -74,7 +75,7 @@ const Layout = ({ children }) => {
       <AppBar className={classes.appbar}>
         <Toolbar className={classes.navbar}>
           <Typography variant="h5" className={classes.title}>
-            TrackIt
+            HABIT TRACKER
           </Typography>
         </Toolbar>
       </AppBar>
