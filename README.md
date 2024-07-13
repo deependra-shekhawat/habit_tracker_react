@@ -5,7 +5,7 @@ This is a simple habit tracker application built with React and Redux.
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/habit-tracker-app.git
+git clone https://github.com/deependra-shekhawat/habit_tracker_react.git
 cd habit-tracker-app
 npm install
 npm start
