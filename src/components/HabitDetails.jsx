@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   card: {
     margin: '10px',
     padding: '10px',
-    width: '100px',
+    width: '120px',
     textAlign: 'center',
   },
   statusBox: {
@@ -18,6 +18,9 @@ const useStyles = makeStyles({
     margin: '10px auto',
     cursor: 'pointer',
   },
+  date:{
+    fontSize: '0.7rem',
+  }
 });
 
 const HabitDetails = ({ element, day, title }) => {
@@ -42,7 +45,7 @@ const HabitDetails = ({ element, day, title }) => {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="body1">{dayName}</Typography>
-        <Typography variant="body2">{date}</Typography>
+        <Typography variant="body2" className={classes.date}>{date}</Typography>
         <div className={classes.statusBox} onClick={() => onClickStatusChange()}>
           {status === DONE ? <Done /> : null}
           {status === NOT_DONE ? <Cancel /> : null}
