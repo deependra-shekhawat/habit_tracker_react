@@ -1,104 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Habit Tracker App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    code {
-      background-color: #e8e8e8;
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
-    pre {
-      background-color: #e8e8e8;
-      padding: 10px;
-      border-radius: 4px;
-      overflow: auto;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      background: #fff;
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 4px;
-      border: 1px solid #ddd;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Habit Tracker App</h1>
-    <p>This is a simple habit tracker application built with React and Redux.</p>
+# Habit Tracker App
 
-    <h2>Installation</h2>
-    <pre><code>
+This is a simple habit tracker application built with React and Redux.
+
+## Installation
+
+```bash
 git clone https://github.com/yourusername/habit-tracker-app.git
 cd habit-tracker-app
 npm install
 npm start
-    </code></pre>
+```
 
-    <h2>Project Structure</h2>
-    <ul>
-      <li><code>src/store.js</code>: Configures the Redux store.</li>
-      <li><code>src/App.js</code>: Sets up the routes and layout for the application.</li>
-      <li><code>src/pages/Habits.js</code>: Displays the list of habits.</li>
-      <li><code>src/pages/AddHabits.js</code>: Form to add new habits.</li>
-      <li><code>src/components/HabitComponent.js</code>: Component to display individual habit details.</li>
-      <li><code>src/components/HabitDetails.js</code>: Component to display and update habit status for each day.</li>
-      <li><code>src/actions/habitActions.js</code>: Contains action creators for habits.</li>
-      <li><code>src/constants/habitStatus.js</code>: Defines constants for habit statuses.</li>
-    </ul>
+## Project Structure
 
-    <h2>Usage</h2>
-    <h3>Adding a Habit</h3>
-    <ol>
-      <li>Navigate to the "Add Habit" page by clicking "Add Habit" in the navigation bar.</li>
-      <li>Fill out the form with the habit title and description.</li>
-      <li>Click "Submit" to add the habit to the list.</li>
-    </ol>
+- **`src/store.js`**: Configures the Redux store.
+- **`src/App.js`**: Sets up the routes and layout for the application.
+- **`src/pages/Habits.js`**: Displays the list of habits.
+- **`src/pages/AddHabits.js`**: Form to add new habits.
+- **`src/components/HabitComponent.js`**: Component to display individual habit details.
+- **`src/components/HabitDetails.js`**: Component to display and update habit status for each day.
+- **`src/actions/habitActions.js`**: Contains action creators for habits.
+- **`src/constants/habitStatus.js`**: Defines constants for habit statuses.
 
-    <h3>Tracking Habit Progress</h3>
-    <ul>
-      <li>On the main page, you'll see a list of your habits.</li>
-      <li>Click on the status icons to update the progress for each day:</li>
-      <ul>
-        <li><code>Hourglass</code>: Not done yet</li>
-        <li><code>Done</code>: Completed</li>
-        <li><code>Cancel</code>: Not completed</li>
-      </ul>
-    </ul>
+## Usage
 
-    <h2>Dependencies</h2>
-    <ul>
-      <li>React</li>
-      <li>Redux</li>
-      <li>React-Redux</li>
-      <li>React-Router-DOM</li>
-      <li>@material-ui/core</li>
-      <li>@material-ui/icons</li>
-    </ul>
+### Adding a Habit
 
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License.</p>
-  </div>
-</body>
-</html>
+1. Navigate to the "Add Habit" page by clicking "Add Habit" in the navigation bar.
+2. Fill out the form with the habit title and description.
+3. Click "Submit" to add the habit to the list.
+
+### Tracking Habit Progress
+
+- On the main page, you'll see a list of your habits.
+- Click on the status icons to update the progress for each day:
+  - **Hourglass**: Not done yet
+  - **Done**: Completed
+  - **Cancel**: Not completed
+
+## Dependencies
+
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [React-Redux](https://react-redux.js.org/)
+- [React-Router-DOM](https://reactrouter.com/)
+- [@material-ui/core](https://material-ui.com/)
+- [@material-ui/icons](https://material-ui.com/components/icons/)
+
+## License
+
+This project is licensed under the MIT License.
