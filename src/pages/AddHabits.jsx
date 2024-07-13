@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   Container,
@@ -6,11 +7,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import { KeyboardArrowRight } from '@material-ui/icons';
-import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addHabit } from '../actions/habitActions';
 import { NONE } from '../constants/habitStatus';
 import { useNavigate } from 'react-router-dom';
+import { format, subDays } from 'date-fns';
 
 const useStyles = makeStyles({
   field: {
@@ -30,11 +31,8 @@ const useStyles = makeStyles({
 const AddHabits = () => {
   const dispatch = useDispatch();
 
-  // hooks to set title and details of habit
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
-
-  // error states
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
 
@@ -42,8 +40,6 @@ const AddHabits = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // set error state to false of text fields
     setTitleError(false);
     setDetailsError(false);
 
@@ -57,42 +53,28 @@ const AddHabits = () => {
       const habit = {
         title,
         description: details,
-        consistency: [
-          {
-            day: 1,
-            status: NONE,
-          },
-          {
-            day: 2,
-            status: NONE,
-          },
-          {
-            day: 3,
-            status: NONE,
-          },
-          {
-            day: 4,
-            status: NONE,
-          },
-          {
-            day: 5,
-            status: NONE,
-          },
-          {
-            day: 6,
-            status: NONE,
-          },
-          {
-            day: 7,
-            status: NONE,
-          },
-        ],
+        consistency: weekDates.map((date) => ({
+          day: date,
+          status: NONE,
+        })),
       };
       dispatch(addHabit(habit));
       navigate('/');
     }
   };
+
   const classes = useStyles();
+
+  const [weekDates, setWeekDates] = useState([]);
+
+  useEffect(() => {
+    const today = new Date();
+    const dates = Array.from({ length: 7 }).map((_, index) =>
+      format(subDays(today, 6 - index), 'EEEE, dd-MM-yyyy')
+    );
+    setWeekDates(dates);
+  }, []);
+
   return (
     <Container size="sm" className={classes.container}>
       <Typography
@@ -101,7 +83,6 @@ const AddHabits = () => {
         gutterBottom
         className={classes.title}
       >
-        {' '}
         Create a new Habit
       </Typography>
       <form onSubmit={handleSubmit} autoComplete="off" noValidate>

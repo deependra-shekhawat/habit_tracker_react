@@ -1,109 +1,37 @@
 import { ADD_HABIT, UPDATE_HABIT_STATUS } from '../constants/actionTypes';
 import { DONE, NOT_DONE, NONE } from '../constants/habitStatus';
+import { format, subDays } from 'date-fns';
+
+const today = new Date();
+const dates = Array.from({ length: 7 }).map((_, index) =>
+  format(subDays(today, 6 - index), 'EEEE, dd-MM-yyyy')
+);
 
 const initialState = {
   habits: [
     {
       title: 'Go to Gym',
-      description: 'Workout for atleast 30 minutes',
-      consistency: [
-        {
-          day: 1,
-          status: DONE,
-        },
-        {
-          day: 2,
-          status: NOT_DONE,
-        },
-        {
-          day: 3,
-          status: NONE,
-        },
-        {
-          day: 4,
-          status: DONE,
-        },
-        {
-          day: 5,
-          status: NONE,
-        },
-        {
-          day: 6,
-          status: NOT_DONE,
-        },
-        {
-          day: 7,
-          status: NOT_DONE,
-        },
-      ],
+      description: 'Workout for at least 30 minutes',
+      consistency: dates.map((date) => ({
+        day: date,
+        status: NONE,
+      })),
     },
     {
       title: 'Read a book',
-      description: 'Try to finish atleast one book',
-      consistency: [
-        {
-          day: 1,
-          status: NONE,
-        },
-        {
-          day: 2,
-          status: NONE,
-        },
-        {
-          day: 3,
-          status: NONE,
-        },
-        {
-          day: 4,
-          status: DONE,
-        },
-        {
-          day: 5,
-          status: DONE,
-        },
-        {
-          day: 6,
-          status: NOT_DONE,
-        },
-        {
-          day: 7,
-          status: DONE,
-        },
-      ],
+      description: 'Try to finish at least one book',
+      consistency: dates.map((date) => ({
+        day: date,
+        status: NONE,
+      })),
     },
     {
       title: 'Cook food',
       description: 'Learn to cook healthy meals',
-      consistency: [
-        {
-          day: 1,
-          status: DONE,
-        },
-        {
-          day: 2,
-          status: NOT_DONE,
-        },
-        {
-          day: 3,
-          status: NONE,
-        },
-        {
-          day: 4,
-          status: NONE,
-        },
-        {
-          day: 5,
-          status: DONE,
-        },
-        {
-          day: 6,
-          status: DONE,
-        },
-        {
-          day: 7,
-          status: NOT_DONE,
-        },
-      ],
+      consistency: dates.map((date) => ({
+        day: date,
+        status: NONE,
+      })),
     },
   ],
 };
@@ -115,26 +43,20 @@ const reducer = (state = initialState, action) => {
         habits: [...state.habits, action.payload],
       };
 
-    // structure of habit array
-    // habits = [title, description, consistency[day, status]]
-
     case UPDATE_HABIT_STATUS:
-      // get index of title from habits array
-      const idx = state.habits
-        .map((e) => {
-          return e.title;
-        })
-        .indexOf(action.title);
-
-      // use day - 1 as index of consistency array and change status of habit
-      if (action.payload === DONE) {
-        state.habits[idx].consistency[action.day - 1].status = NOT_DONE;
-      } else if (action.payload === NOT_DONE) {
-        state.habits[idx].consistency[action.day - 1].status = NONE;
-      } else if (action.payload === NONE) {
-        state.habits[idx].consistency[action.day - 1].status = DONE;
+      const idx = state.habits.findIndex((habit) => habit.title === action.title);
+      if (idx !== -1) {
+        const habit = state.habits[idx];
+        const consistencyIdx = habit.consistency.findIndex((c) => c.day === action.day);
+        if (consistencyIdx !== -1) {
+          habit.consistency[consistencyIdx].status =
+            action.payload === DONE ? NOT_DONE : action.payload === NOT_DONE ? NONE : DONE;
+        }
       }
-      return state;
+      return {
+        ...state,
+        habits: [...state.habits],
+      };
     default:
       return state;
   }

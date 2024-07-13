@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography, makeStyles, Card, CardContent } from '@material-ui/core';
 import { Done, Cancel, HourglassEmptyOutlined } from '@material-ui/icons';
 import { DONE, NONE, NOT_DONE } from '../constants/habitStatus';
 import { updateStatus } from '../actions/habitActions';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
+  card: {
+    margin: '10px',
     padding: '10px',
+    width: '100px',
+    textAlign: 'center',
   },
   statusBox: {
     height: '20px',
     width: '20px',
-    margin: '20px',
-    marginLeft: '10px',
+    margin: '10px auto',
     cursor: 'pointer',
   },
 });
@@ -36,15 +35,21 @@ const HabitDetails = ({ element, day, title }) => {
     }
     dispatch(updateStatus(element.status, day, title));
   };
+
+  const [dayName, date] = day.split(', ');
+
   return (
-    <div>
-      <Typography>Day {day}</Typography>
-      <div className={classes.statusBox} onClick={() => onClickStatusChange()}>
-        {status === DONE ? <Done /> : null}
-        {status === NOT_DONE ? <Cancel /> : null}
-        {status === NONE ? <HourglassEmptyOutlined /> : null}
-      </div>
-    </div>
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography variant="body1">{dayName}</Typography>
+        <Typography variant="body2">{date}</Typography>
+        <div className={classes.statusBox} onClick={() => onClickStatusChange()}>
+          {status === DONE ? <Done /> : null}
+          {status === NOT_DONE ? <Cancel /> : null}
+          {status === NONE ? <HourglassEmptyOutlined /> : null}
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
