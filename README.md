@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    code {
+      background-color: #e8e8e8;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    pre {
+      background-color: #e8e8e8;
+      padding: 10px;
+      border-radius: 4px;
+      overflow: auto;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Habit Tracker App</h1>
+    <p>This is a simple habit tracker application built with React and Redux.</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    <h2>Installation</h2>
+    <pre><code>
+git clone https://github.com/yourusername/habit-tracker-app.git
+cd habit-tracker-app
+npm install
+npm start
+    </code></pre>
 
-## Available Scripts
+    <h2>Project Structure</h2>
+    <ul>
+      <li><code>src/store.js</code>: Configures the Redux store.</li>
+      <li><code>src/App.js</code>: Sets up the routes and layout for the application.</li>
+      <li><code>src/pages/Habits.js</code>: Displays the list of habits.</li>
+      <li><code>src/pages/AddHabits.js</code>: Form to add new habits.</li>
+      <li><code>src/components/HabitComponent.js</code>: Component to display individual habit details.</li>
+      <li><code>src/components/HabitDetails.js</code>: Component to display and update habit status for each day.</li>
+      <li><code>src/actions/habitActions.js</code>: Contains action creators for habits.</li>
+      <li><code>src/constants/habitStatus.js</code>: Defines constants for habit statuses.</li>
+    </ul>
 
-In the project directory, you can run:
+    <h2>Usage</h2>
+    <h3>Adding a Habit</h3>
+    <ol>
+      <li>Navigate to the "Add Habit" page by clicking "Add Habit" in the navigation bar.</li>
+      <li>Fill out the form with the habit title and description.</li>
+      <li>Click "Submit" to add the habit to the list.</li>
+    </ol>
 
-### `npm start`
+    <h3>Tracking Habit Progress</h3>
+    <ul>
+      <li>On the main page, you'll see a list of your habits.</li>
+      <li>Click on the status icons to update the progress for each day:</li>
+      <ul>
+        <li><code>Hourglass</code>: Not done yet</li>
+        <li><code>Done</code>: Completed</li>
+        <li><code>Cancel</code>: Not completed</li>
+      </ul>
+    </ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    <h2>Dependencies</h2>
+    <ul>
+      <li>React</li>
+      <li>Redux</li>
+      <li>React-Redux</li>
+      <li>React-Router-DOM</li>
+      <li>@material-ui/core</li>
+      <li>@material-ui/icons</li>
+    </ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    <h2>License</h2>
+    <p>This project is licensed under the MIT License.</p>
+  </div>
+</body>
+</html>
